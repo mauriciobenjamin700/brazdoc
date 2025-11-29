@@ -8,7 +8,8 @@ from glob import glob
 
 def get_image_files(
     directory: str,
-    extensions=['*.png', '*.jpg', '*.jpeg', '*.bmp', '*.gif']
+    extensions: list[str] = ['*.png', '*.jpg', '*.jpeg', '*.bmp', '*.gif'],
+    exclude_labels: list[str] = [],
 ):
     """
     Retrieve a list of image files from the specified directory with given
@@ -17,12 +18,21 @@ def get_image_files(
     Args:
         directory (str): The directory to search for image files.
         extensions (list): A list of file extensions to look for.
+        exclude_labels (list): A list of labels; files containing these labels
+            in their names will be excluded.
     Returns:
         list: A list of image file paths.
     """
     image_files = []
     for ext in extensions:
         image_files.extend(glob(f"{directory}/{ext}"))
+
+    if exclude_labels:
+        image_files = [
+            img for img in image_files
+            if not any(label in img for label in exclude_labels)
+        ]
+
     return image_files
 
 
