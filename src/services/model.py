@@ -80,5 +80,4 @@ class MachineLearningPredictService:
         """
         feature = extract_features(image_path)
         prediction = self.model.predict([feature])
-        print(prediction)
         return prediction[0]
