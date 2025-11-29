@@ -1,0 +1,13 @@
+from .dataset import (
+    CPF_IMAGE_FOLDERS,
+    CNH_IMAGE_FOLDERS,
+    IMAGE_EXTENSION,
+    RG_IMAGE_FOLDERS
+)
+
+__all__ = [
+    "CPF_IMAGE_FOLDERS",
+    "RG_IMAGE_FOLDERS",
+    "CNH_IMAGE_FOLDERS",
+    "IMAGE_EXTENSION",
+]
