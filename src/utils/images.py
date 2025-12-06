@@ -10,7 +10,7 @@ def get_image_files(
     directory: str,
     extensions: list[str] = ['*.png', '*.jpg', '*.jpeg', '*.bmp', '*.gif'],
     exclude_labels: list[str] = [],
-):
+) -> list[str]:
     """
     Retrieve a list of image files from the specified directory with given
     extensions.

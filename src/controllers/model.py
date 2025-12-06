@@ -1,12 +1,7 @@
 from datetime import datetime
 
-from src.core.constants import (
-    CPF_IMAGE_FOLDERS,
-    CNH_IMAGE_FOLDERS,
-    RG_IMAGE_FOLDERS
-)
+from src.scripts import load_dataset
 from src.services import MachineLearningBuildModelService
-from src.utils import get_image_files
 
 
 class MachineLearningModelGeneratorController:
@@ -14,29 +9,7 @@ class MachineLearningModelGeneratorController:
     @staticmethod
     def generate_and_save():
 
-        cpf = []
-
-        for folder in CPF_IMAGE_FOLDERS:
-            images = get_image_files(folder, exclude_labels=["segmentation"])
-            cpf.extend(images)
-
-        cnh = []
-
-        for folder in CNH_IMAGE_FOLDERS:
-            images = get_image_files(folder, exclude_labels=["segmentation"])
-            cnh.extend(images)
-
-        rg = []
-
-        for folder in RG_IMAGE_FOLDERS:
-            images = get_image_files(folder, exclude_labels=["segmentation"])
-            rg.extend(images)
-
-        dataset = {
-            "cpf": cpf,
-            "cnh": cnh,
-            "rg": rg
-        }
+        dataset = load_dataset()
 
         start_time = datetime.now()
 

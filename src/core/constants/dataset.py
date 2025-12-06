@@ -2,7 +2,7 @@ from os.path import abspath, dirname, join
 
 ROOT = dirname(dirname(dirname(dirname(__file__))))
 
-DATASET_PATH = abspath(join(ROOT, "dataset"))
+DATASET_PATH = abspath(join(ROOT, "data"))
 
 CPF_IMAGE_FOLDERS = [
     join(DATASET_PATH, "CPF_Frente"),
