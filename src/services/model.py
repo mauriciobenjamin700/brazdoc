@@ -61,8 +61,11 @@ class MachineLearningBuildModelService:
 
 class MachineLearningPredictService:
 
-    def __init__(self, model: LinearSVC) -> None:
-        self.model = model
+    def __init__(self, model: LinearSVC | str) -> None:
+        if isinstance(model, str):
+            self.model = MachineLearningBuildModelService.load_model(model)
+        else:
+            self.model = model
 
     def predict_image_class(
         self,
